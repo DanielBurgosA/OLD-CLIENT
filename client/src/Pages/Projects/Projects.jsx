@@ -1,10 +1,11 @@
-import CardContainer from "../../Components/CardContainer/CardContainer"
+import Page from "../../Components/Page/Page"
+
 
 export default function Projects (){
     return(
         <div>
             <p>Soy Projects</p>
-            <CardContainer/>
+            <Page/>
         </div>
     )
 }
