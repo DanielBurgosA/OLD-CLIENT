@@ -8,7 +8,7 @@ const initialState = {
 
 export const getAllProjects = createAsyncThunk('project/getProjects', async () => {
     
-        const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+        const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");//use la fake Api de json place holder para simular la request
         const data = res.json();
         return data;
     
@@ -17,7 +17,12 @@ export const getAllProjects = createAsyncThunk('project/getProjects', async () =
 export const projectsSlicer = createSlice({
     name: 'project',
     initialState,
-    reducers: {},
+    reducers: {
+        filterById(state, action){
+            state.projectToDisplay = action.payload
+        }
+    },
+    //se utiliza para que el reducer sepa como manejar actions que vienen fuera del reducer
     extraReducers(builder) {
         builder
             .addCase(getAllProjects.pending, (state, action)=>{
@@ -32,11 +37,13 @@ export const projectsSlicer = createSlice({
 
             .addCase(getAllProjects.rejected,  (state, action)=>{
                 state.status = 'rejected';
-                state.status = action.error.message;
+                state.error = action.error.message;
             })
+
     }
 })
 
+export const {filterById} = projectsSlicer.actions;
 
 
 export default projectsSlicer.reducer;
