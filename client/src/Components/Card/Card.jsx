@@ -1,11 +1,14 @@
 import  './Card.css';
 
 export default function Card (props){
+
+    const {name, abstrac, images} = props.project;
+    
     return(
         <div>
-            <p> Name:{props.name}</p>
-            <img src={props.image} alt={props.name}/>
-            <p>Description: {props.abstrac}</p>
+            <p> Name:{name}</p>
+            <img src={images} alt={name}/>
+            <p>Description: {abstrac}</p>
         </div>
     )
 }

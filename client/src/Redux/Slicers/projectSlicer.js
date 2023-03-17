@@ -4,7 +4,7 @@ import axios from 'axios';
 const initialState = {
     AllProjects:{},
     postStatus: '',
-    error: null
+    error: null,
 };
 
 export const postProject = createAsyncThunk('project/postProject', async (info) => {
