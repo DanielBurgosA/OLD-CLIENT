@@ -17,29 +17,11 @@ export const getProjectById = createAsyncThunk(
   }
 );
 
-<<<<<<< HEAD
-export const projectsSlicer = createSlice({
-    name: 'project',
-    initialState,
-    reducers: {},
-    //se utiliza para que el reducer sepa como manejar actions que vienen fuera del reducer
-    extraReducers(builder) {
-        builder
-            .addCase(postProject.fulfilled, (state, action)=>{
-                let data = action.payload;
-                state.status = 'Succeeded';
-                state.AllProjects = data;
-            })
-
-    }
-})
-=======
 export const getProject = createAsyncThunk("project/getProject", async () => {
   const res = await axios.get(`http://localhost:3001/projects`);
   const data = res.json();
   return data;
 });
->>>>>>> 095df69d1eac1beacf6a140f51063948f2943447
 
 export const postProject = createAsyncThunk(
   "project/postProject",
