@@ -15,9 +15,11 @@ import {
 import { usersFormSchema } from "./UserFormErrors";
 import { useDispatch } from "react-redux";
 import { postUser } from "../../Redux/Slicers/userSlicer";
+import { useNavigate } from "react-router-dom";
 
 export default function UserForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -30,8 +32,10 @@ export default function UserForm() {
 
   const Submit = (data) => {
     console.log(data)
-    dispatch(postUser(data))
+    dispatch(postUser(data));
+    navigate("/login");
   }
+  
   return (
     <Container mt="100px">
       <Heading>Create an account</Heading>
