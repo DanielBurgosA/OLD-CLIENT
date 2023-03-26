@@ -17,6 +17,11 @@ export const linkPaymentPlatform = createAsyncThunk(
 const paymentSlicer = createSlice({
     name: "paymentLink",
     initialState,
+    reducers:{
+      cleanLink(state, action) {
+        state.payLink = "";
+      },
+    },
     extraReducers: (builder) => {
       builder.addCase(linkPaymentPlatform.fulfilled, (state, action) => {
         console.log("esto es action", action.payload.data.links[1].href)
@@ -26,5 +31,5 @@ const paymentSlicer = createSlice({
   });
 
 
-export const { payLink } = paymentSlicer.actions
+export const { cleanLink } = paymentSlicer.actions
 export default paymentSlicer.reducer;

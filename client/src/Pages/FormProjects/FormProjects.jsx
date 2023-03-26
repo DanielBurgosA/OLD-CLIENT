@@ -64,18 +64,6 @@ export default function FormProjects() {
               )}
             </FormControl>
 
-            <FormControl isInvalid={errors.title ? true : false}>
-              <FormLabel>Title</FormLabel>
-              <Input
-                type="text"
-                placeholder="Enter a title you want the contributors see"
-                {...register("title")}
-              />
-              {!errors.name ? null : (
-                <FormErrorMessage>{errors.title?.message}</FormErrorMessage>
-              )}
-            </FormControl>
-
             <FormControl isInvalid={errors.image ? true : false}>
               <FormLabel>Image</FormLabel>
               <Input

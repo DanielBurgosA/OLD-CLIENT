@@ -4,7 +4,7 @@ import { loginUsersSchema } from "./LoginErrors";
 import { userLogIn } from "../../Redux/Slicers/LogInSlicer"; 
 import { useDispatch, useSelector } from "react-redux";
 //import { confgCookie } from "../../Redux/Slicers/LogInSlicer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import {
@@ -32,25 +32,27 @@ export default function LogIn() {
 
     const LogInStatus = useSelector (state => state.login.status)
 
-    console.log(LogInStatus)
-
     const dispatch = useDispatch();
-
-    console.log(Cookie.get("value"));
     
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginUsersSchema)
     })
 
+    const[disp, setDisp] = useState(false);
+
     const Submit = (data) => {
         dispatch(userLogIn(data));
-
+        console.log(LogInStatus)
     }
 
     useEffect(() => {
         LogInStatus && navigate('/home');
-     }, [LogInStatus]);
+        (!LogInStatus && disp) && alert("funciona por favor");
+        return ()=>{
+            setDisp(false);
+          }
+     }, [LogInStatus,disp]);
     
 
     return (
@@ -73,10 +75,8 @@ export default function LogIn() {
                         <Link to={"/create-user"} style={{color:"blue"}}>Create an Account</Link> 
                         <Spacer></Spacer>
                         <Button type="submit" colorScheme="blue"> send </Button>
-                        
-                        {/* <SignUp/> */}
                     </Flex>
-
+                    <SignUp/>
                 </VStack>
 
             </form>

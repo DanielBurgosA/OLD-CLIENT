@@ -26,17 +26,21 @@ export default function NavBar() {
           <GridItem mt="10px" mb="50px">
             <Flex alignItems="center">
               <Spacer></Spacer>
-              <a href="/create-user">
+
+              {LogInStatus && <LogOutButton className={style.underline}/>}
+
+              {!LogInStatus &&<a href="/create-user">
                 <Button colorScheme="teal" variant="outline" marginRight="1rem">
                   Sign Up
                 </Button>
               </a>
+              }
 
-              <a href="/login">
+              {!LogInStatus &&<a href="/login">
                 <Button colorScheme="teal" variant="solid" marginRight="1rem">
                   Sign In
                 </Button>
-              </a>
+              </a>}
 
               <ToggleColorMode />
             </Flex>
@@ -47,12 +51,6 @@ export default function NavBar() {
               {location.pathname !== "/home" && (
                 <Link to={"/home"}>
                   <span className={style.underline}>HOME</span>{" "}
-                </Link>
-              )}
-              {!LogInStatus && location.pathname !== "/login" && (
-                <Link to={"/login"}>
-                  {" "}
-                  <span>Login</span>{" "}
                 </Link>
               )}
 
@@ -74,7 +72,6 @@ export default function NavBar() {
                   <span className={style.underline}>About Us</span>{" "}
                 </Link>
               )}
-              {LogInStatus && <LogOutButton />}
             </Flex>
           </GridItem>
         </GridItem>
