@@ -23,7 +23,7 @@ export default function Pagos() {
     <div className={style.Prov}>
       <div className={style.column}>
         <Button onClick={handleButtonClick} className={style.button}>
-          Realizar donacion con PayPal
+          Making donation
         </Button>
       </div>
     </div>

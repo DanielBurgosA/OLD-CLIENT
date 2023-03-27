@@ -72,6 +72,12 @@ export default function NavBar() {
                   <span className={style.underline}>About Us</span>{" "}
                 </Link>
               )}
+              {location.pathname !== "/pagos" && (
+                <Link to={"/pagos"}>
+                  {" "}
+                  <span className={style.underline}>Making donation</span>{" "}
+                </Link>
+              )}
             </Flex>
           </GridItem>
         </GridItem>
