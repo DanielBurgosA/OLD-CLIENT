@@ -11,7 +11,7 @@ export default function NavBar() {
   const location = useLocation();
 
   const LogInStatus = useSelector((state) => state.login.status);
-  console.log(LogInStatus);
+  console.log("login status", LogInStatus);
 
   return (
     <div className={style.navBar}>
@@ -72,6 +72,13 @@ export default function NavBar() {
                   <span className={style.underline}>About Us</span>{" "}
                 </Link>
               )}
+              {location.pathname !== "/pagos" && (
+                <Link to={"/pagos"}>
+                  {" "}
+                  <span className={style.underline}>Making donation</span>{" "}
+                </Link>
+              )}
+
             </Flex>
           </GridItem>
         </GridItem>
