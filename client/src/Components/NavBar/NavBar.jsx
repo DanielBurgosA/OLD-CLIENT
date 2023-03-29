@@ -6,6 +6,7 @@ import image from "../../Utils/image/2.jpg";
 import style from "./NavBar.module.css";
 import { useSelector } from "react-redux";
 import LogOutButton from "../logOutButton/LogOutButton";
+import HamburgerMenu from "../HamburgerMenu/HamburguerMenu";
 
 export default function NavBar() {
   const location = useLocation();
@@ -27,52 +28,62 @@ export default function NavBar() {
             <Flex alignItems="center">
               <Spacer></Spacer>
 
-              {LogInStatus && <LogOutButton className={style.underline}/>}
+              {LogInStatus && <LogOutButton className={style.underline} />}
 
-              {!LogInStatus &&<a href="/create-user">
-                <Button colorScheme="teal" variant="outline" marginRight="1rem">
-                  Sign Up
-                </Button>
-              </a>
-              }
+              {!LogInStatus && (
+                <a href="/create-user">
+                  <Button
+                    colorScheme="teal"
+                    variant="outline"
+                    marginRight="1rem"
+                  >
+                    Sign Up
+                  </Button>
+                </a>
+              )}
 
-              {!LogInStatus &&<a href="/login">
-                <Button colorScheme="teal" variant="solid" marginRight="1rem">
-                  Sign In
-                </Button>
-              </a>}
+              {!LogInStatus && (
+                <a href="/login">
+                  <Button colorScheme="teal" variant="solid" marginRight="1rem">
+                    Sign In
+                  </Button>
+                </a>
+              )}
 
               <ToggleColorMode />
             </Flex>
           </GridItem>
 
           <GridItem>
-            <Flex justify="space-around">
-              {location.pathname !== "/home" && (
-                <Link to={"/home"}>
-                  <span className={style.underline}>HOME</span>{" "}
-                </Link>
-              )}
+            <Box display={{ base: "none", md: "block" }}>
+              <Flex justify="space-around">
+                {location.pathname !== "/home" && (
+                  <Link to={"/home"}>
+                    <span className={style.underline}>HOME</span>{" "}
+                  </Link>
+                )}
 
-              {location.pathname !== "/projects" && (
-                <Link to={"/projects"}>
-                  {" "}
-                  <span className={style.underline}>Projects</span>{" "}
-                </Link>
-              )}
-              {location.pathname !== "/create" && (
-                <Link to={"/create"}>
-                  {" "}
-                  <span className={style.underline}>Create Project</span>{" "}
-                </Link>
-              )}
-              {location.pathname !== "/home/aboutUs" && (
-                <Link to={"/home/aboutUs"}>
-                  {" "}
-                  <span className={style.underline}>About Us</span>{" "}
-                </Link>
-              )}
-            </Flex>
+                {location.pathname !== "/projects" && (
+                  <Link to={"/projects"}>
+                    {" "}
+                    <span className={style.underline}>Projects</span>{" "}
+                  </Link>
+                )}
+                {location.pathname !== "/create" && (
+                  <Link to={"/create"}>
+                    {" "}
+                    <span className={style.underline}>Create Project</span>{" "}
+                  </Link>
+                )}
+                {location.pathname !== "/home/aboutUs" && (
+                  <Link to={"/home/aboutUs"}>
+                    {" "}
+                    <span className={style.underline}>About Us</span>{" "}
+                  </Link>
+                )}
+              </Flex>
+            </Box>
+            <HamburgerMenu />
           </GridItem>
         </GridItem>
       </Grid>

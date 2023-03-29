@@ -23,7 +23,7 @@ const initialState = {
 export const getProjectById = createAsyncThunk(
   "project/getProjectById",
   async (id) => {
-    const res = await axios.get(`http://localhost:3001/projects/${id}`);
+    const res = await axios.get(`/projects/${id}`);
     return res.data;
   }
 );
@@ -31,13 +31,13 @@ export const getProjectById = createAsyncThunk(
 export const getProjectByName = createAsyncThunk(
   "project/getProjectByName",
   async (name) => {
-    const res = await axios.get(`http://localhost:3001/projects?name=${name}`);
+    const res = await axios.get(`/projects?name=${name}`);
     return res.data;
   }
 );
 
 export const getProject = createAsyncThunk("project/getProject", async () => {
-  const res = await axios.get(`http://localhost:3001/projects`);
+  const res = await axios.get(`/projects`);
   return res.data;
 });
 
@@ -52,7 +52,7 @@ export const postProject = createAsyncThunk(
     });
 
     try {
-      const res = await axios.post("http://localhost:3001/projects", info);
+      const res = await axios.post("/projects", info);
 
 
       console.log(res.data)

@@ -11,7 +11,7 @@ export const userLogIn = createAsyncThunk(
     "LogIn/postUserLogIn",
     async (data) => {
         try {
-            const verify = await axios.post(`http://localhost:3001/login`, data);
+            const verify = await axios.post(`/login`, data);
             console.log(verify.data)
             return verify.data;
         } catch (error) {

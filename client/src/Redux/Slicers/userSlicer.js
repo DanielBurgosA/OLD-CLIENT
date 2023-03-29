@@ -12,7 +12,7 @@ const initialState = {
 // export const getUsers = createAsyncThunk(
 //   "user/getUsers",
 //   async () => {
-//     const res = await axios.get(`http://localhost:3001/`);
+//     const res = await axios.get(`/`);
 //     const data = res.json();
 //     return data;
 //   }
@@ -22,7 +22,7 @@ const initialState = {
 export const postUser = createAsyncThunk(
   "user/postUser",
   async (info) => {
-    const res = await axios.post("http://localhost:3001/user", info);
+    const res = await axios.post("/user", info);
     return res.data;
   }
 );

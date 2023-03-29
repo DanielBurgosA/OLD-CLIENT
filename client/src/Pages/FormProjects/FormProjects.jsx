@@ -17,9 +17,30 @@ import {
 import { projectSchema } from "./Errors";
 import { postProject } from "../../Redux/Slicers/projectSlicer";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function FormProjects() {
+  const navigate = useNavigate();
+
+  const[img, setImg] = useState("");
+
+  var myWidget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: "dipomzedf",
+      uploadPreset: "linkingfuture"
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        setImg(result.info.secure_url)
+        console.log("Done! Here is the image info: ", result.info);
+      }
+    }
+  );
+  const widgetOpen = () => {
+    myWidget.open()
+  }
+
+
   const users = useSelector((state) => state.user.users);
   const LogInStatus = useSelector((state) => state.login.status);
   console.log("login del create", LogInStatus);
@@ -36,8 +57,11 @@ export default function FormProjects() {
 
   const Submit = (data) => {
     //if (LogInStatus){
+      data.image=img;
       dispatch(postProject(data))
-    
+      console.log(data);
+      alert("se creo proyecto")
+      navigate("/projects");
     //}else{
      // SetErr("debes loguearte")
     //}
@@ -64,7 +88,7 @@ export default function FormProjects() {
               )}
             </FormControl>
 
-            <FormControl isInvalid={errors.image ? true : false}>
+            {/* <FormControl isInvalid={errors.image ? true : false}>
               <FormLabel>Image</FormLabel>
               <Input
                 type="text"
@@ -74,7 +98,7 @@ export default function FormProjects() {
               {!errors.name ? null : (
                 <FormErrorMessage>{errors.image?.message}</FormErrorMessage>
               )}
-            </FormControl>
+            </FormControl> */}
 
             <FormControl isInvalid={errors.location ? true : false}>
               <FormLabel>Location</FormLabel>
@@ -115,6 +139,7 @@ export default function FormProjects() {
             </Button>
           </VStack>
         </form>
+        <button onClick={widgetOpen}>Imagen</button>
         {err ? <span>debes loguearte</span> : null}
       </Container>
     );
