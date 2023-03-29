@@ -68,26 +68,38 @@ export default function LargeWithNewsletter() {
                 Sociedad
               </Text>
               <Stack direction={"row"} spacing={6}>
-                <SocialButton
-                  label={"Twitter"}
-                  href={
-                    "https://www.facebook.com/profile.php?id=100089881240949&is_tour_dismissed=true"
-                  }
-                  // target="_blank"
-                >
-                  <FaFacebook />
+                <SocialButton>
+                  <Link
+                    label={"facebook"}
+                    href="https://www.facebook.com/profile.php?id=100089881240949&is_tour_dismissed=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    isExternal
+                  >
+                    <FaFacebook />
+                  </Link>
                 </SocialButton>
-                <SocialButton
-                  label={"YouTube"}
-                  href={"https://www.youtube.com/@linkingfuture/featured"}
-                >
-                  <FaYoutube />
+                <SocialButton>
+                  <Link
+                    label={"YouTube"}
+                    href="https://www.youtube.com/@linkingfuture/featured"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    isExternal
+                  >
+                    <FaYoutube />
+                  </Link>
                 </SocialButton>
-                <SocialButton
-                  label={"Instagram"}
-                  href={"https://www.instagram.com/futurelinking19/?hl=en"}
-                >
-                  <FaInstagram />
+                <SocialButton>
+                  <Link
+                    label={"Instagram"}
+                    href="https://www.instagram.com/futurelinking19/?hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    isExternal
+                  >
+                    <FaInstagram />
+                  </Link>
                 </SocialButton>
               </Stack>
             </Stack>
